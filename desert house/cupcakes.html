@@ -1,0 +1,340 @@
+<link rel="stylesheet" href="css/styles.css" />
+<style>
+  /* --- Section Header Styling --- */
+  .section-title {
+    text-align: center;
+    font-family: sans-serif;
+    color: #a04058; /* Maroon/Pinkish color for the title */
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  /* --- Product Gallery Grid (Main Layout) --- */
+  .product-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 10px;
+  }
+
+  /* --- Individual Product Card Styling --- */
+  .product-card {
+    /* THIS RULE ENFORCES 3 PER ROW */
+    flex: 0 0 calc(33.333% - 10px);
+    box-sizing: border-box;
+    text-align: center;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  /* --- Image Container for Hover Effect --- */
+  .image-container {
+    position: relative;
+    width: 100%;
+    /* Creates a square container */
+    padding-bottom: 100%;
+    overflow: hidden;
+    border-radius: 5px;
+  }
+
+  /* --- Styling for Default and Hover Images (STACKED) --- */
+  .image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Smooth transition for the image swap */
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 5px;
+  }
+
+  .image-container .default-image {
+    opacity: 1;
+  }
+
+  .image-container .hover-image {
+    opacity: 0;
+  }
+
+  /* --- Hover Effect: Swap Images --- */
+  .product-card:hover .default-image {
+    opacity: 0;
+  }
+
+  .product-card:hover .hover-image {
+    opacity: 1;
+  }
+
+  /* --- Text and Price Styling --- */
+  .product-card h3 {
+    font-size: 16px;
+    margin: 5px 0 2px 0;
+    color: #333;
+    font-weight: normal;
+  }
+
+  .product-card p {
+    font-size: 18px;
+    margin: 2px 0 10px 0;
+    color: #333;
+    font-weight: bold;
+  }
+
+  /* --- Order Button Styling --- */
+  .order-btn {
+    background-color: #ed3e5b;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .order-btn:hover {
+    background-color: #d18d99;
+  }
+</style>
+<header>
+  <div class="logo">
+    <a href="index.html" style="text-decoration: none; color: inherit;">
+      <img src="images/Group 8.png" alt="Logo" />
+      <h1>The Dessert House</h1>
+    </a>
+  </div>
+  
+  <nav>
+    <ul>
+      <li><a href="aboutus.html">About Us</a></li>
+      <li>
+        <a href="#">Desserts</a>
+        <ul>
+          <li><a href="Alldeserts.html">All Desserts</a></li>
+          <li><a href="pastry.html">Pastry</a></li>
+          <li><a href="brownies.html">Brownies</a></li>
+          <li><a href="tarts.html">Tart</a></li>
+          <li><a href="teacakes.html">Tea Cake</a></li>
+          <li><a href="cupcakes.html">Cup Cake</a></li>
+          <li><a href="jarcakes.html">Jar Cake</a></li>
+          <li><a href="combos.html">Combos</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="actions">
+    <div class="search-container">
+      <div class="search-input-wrapper">
+        <input type="text" id="searchInput" placeholder="Search" />
+        <span class="search-icon">🔍</span>
+      </div>
+
+      <div id="categoryDropdown" class="category-dropdown">
+        <div class="category-row">
+          <button class="category-tag" onclick="window.location.href='brownies.html'">Brownies</button>
+
+          <button class="category-tag"onclick="window.location.href='pastry.html'">Pastry</button>
+        </div>
+        <div class="category-row">
+          <button class="category-tag"onclick="window.location.href='cupcakes.html'">Cup cake</button>
+          <button class="category-tag"onclick="window.location.href='tarts.html'">Tart</button>
+        </div>
+        <div class="category-row">
+          <button class="category-tag"onclick="window.location.href='teacakes.html'">Tea cake</button>
+          <button class="category-tag"onclick="window.location.href='jarcakes.html'">Jar cake</button>
+        </div>
+      </div>
+    </div>
+   <!-- Trigger Button -->
+<button class="login-btn">Log In / Sign Up</button>
+
+<!-- Modal Popup -->
+<div id="loginModal" class="modal">
+<div class="modal-content">
+<span class="close-btn">&times;</span>
+<h2>Login / Sign Up</h2>
+<form>
+  <input 
+    type="email" 
+    placeholder="Enter Email ID" 
+    style="width: 100%; padding: 10px; margin: 12px 0 8px 0; border-radius: 8px; border: none; background: #eee; font-size: 1em;"
+  />
+  <a href="#" style="float: right; margin-top: -34px; margin-right: 8px; color: #2c25c8; font-size: 1em;">With Mobile</a>
+  <button 
+    type="button" 
+    style="width: 100%; padding: 10px; background: #ffd7d7; border: none; border-radius: 8px; font-size: 1.1em; color: #7d6363; margin-top: 24px; cursor: pointer; display: flex; justify-content: center; align-items: center;"
+  >
+    Get OTP <span style="margin-left:10px;">&#8594;</span>
+  </button>
+  <p style="font-size: .93em; color: #111; margin-top: 18px;">
+    By continuing I agree to The Dessert House’s Terms and Conditions and Privacy Policy.
+  </p>
+</form>
+</div>
+</div>
+
+</header>
+<h1 class="section-title">Cup Cakes</h1>
+
+<div class="product-gallery">
+  <div class="product-card">
+    <div class="image-container">
+      <img
+        class="default-image"
+        src="images/Component 20.png"
+        alt="Kitkat Cupcakes"
+      />
+      <img
+        class="hover-image"
+        src="images/Component 21.png"
+        alt="Kitkat Cupcakes Hover"
+      />
+    </div>
+    <h3>Kitkat Cupcakes</h3>
+    <p>Rs. 99/-</p>
+    <button class="order-btn">Order Online</button>
+  </div>
+
+  <div class="product-card">
+    <div class="image-container">
+      <img
+        class="default-image"
+        src="images/Component 24.png"
+        alt="Oreo Cream Cupcake"
+      />
+      <img
+        class="hover-image"
+        src="images/Component 23.png"
+        alt="Oreo Cream Cupcake Hover"
+      />
+    </div>
+    <h3>Oreo Cream Cupcake</h3>
+    <p>Rs. 99/-</p>
+    <button class="order-btn">Order Online</button>
+  </div>
+
+  <div class="product-card">
+    <div class="image-container">
+      <img
+        class="default-image"
+        src="images/Component 22.png"
+        alt="Pineapple Cupcake"
+      />
+      <img
+        class="hover-image"
+        src="images/Component 25.png"
+        alt="Pineapple Cupcake Hover"
+      />
+    </div>
+    <h3>Pineapple Cupcake</h3>
+    <p>Rs. 99/-</p>
+    <button class="order-btn">Order Online</button>
+  </div>
+
+  <div class="product-card">
+    <div class="image-container">
+      <img
+        class="default-image"
+        src="images/Component 20.png"
+        alt="Kitkat Cupcakes"
+      />
+      <img
+        class="hover-image"
+        src="images/Component 21.png"
+        alt="Kitkat Cupcakes Hover"
+      />
+    </div>
+    <h3>Kitkat Cupcakes</h3>
+    <p>Rs. 99/-</p>
+    <button class="order-btn">Order Online</button>
+  </div>
+
+  <div class="product-card">
+    <div class="image-container">
+      <img
+        class="default-image"
+        src="images/Component 24.png"
+        alt="Oreo Cream Cupcake"
+      />
+      <img
+        class="hover-image"
+        src="images/Component 23.png"
+        alt="Oreo Cream Cupcake Hover"
+      />
+    </div>
+    <h3>Oreo Cream Cupcake</h3>
+    <p>Rs. 99/-</p>
+    <button class="order-btn">Order Online</button>
+  </div>
+
+  <div class="product-card">
+    <div class="image-container">
+      <img
+        class="default-image"
+        src="images/Component 22.png"
+        alt="Pineapple Cupcake"
+      />
+      <img
+        class="hover-image"
+        src="images/Component 25.png"
+        alt="Pineapple Cupcake Hover"
+      />
+    </div>
+    <h3>Pineapple Cupcake</h3>
+    <p>Rs. 99/-</p>
+    <button class="order-btn">Order Online</button>
+  </div>
+</div>
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-logo">
+      <img src="images/Group 8.png" alt="The Dessert House Logo" />
+      <h3>The Dessert House</h3>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <div class="links">
+        <div>
+          <a href="aboutus.html">About Us</a>
+          <a href="Alldeserts.html">Desserts</a>
+          <a href="contact.html">Contact</a>
+          <a href="tarts.html">Blogs</a>
+        </div>
+        <div>
+          <a href="#">FAQ</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms and Conditions</a>
+          <a href="#">Refund Policy</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-contact">
+      <p>📞 +91 987 654 3210</p>
+      <p>📧 Contact@thedesserthouse.in</p>
+      <div class="social-icons">
+        <a href="#"><img src="images/youtube.png" alt="YouTube" /></a>
+        <a href="#"><img src="images/facebook.png" alt="Facebook" /></a>
+        <a href="#"><img src="images/instgram.jpeg" alt="Instagram" /></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 The Dessert House.in</p>
+  </div>
+</footer>
