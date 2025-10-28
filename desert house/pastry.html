@@ -342,3 +342,46 @@
     <p>© 2024 The Dessert House.in</p>
   </div>
 </footer>
+<script>
+      let index = 0;
+      const slides = document.querySelector(".slides");
+      const totalSlides = document.querySelectorAll(".slides img").length;
+
+      setInterval(() => {
+        index = (index + 1) % totalSlides;
+        slides.style.transform = `translateX(-${index * 30}%)`;
+      }, 3000);
+
+      const searchInput = document.getElementById("searchInput");
+      const categoryDropdown = document.getElementById("categoryDropdown");
+
+      searchInput.addEventListener("focus", () => {
+        categoryDropdown.style.display = "block";
+      });
+
+      document.addEventListener("click", (event) => {
+        if (
+          !searchInput.contains(event.target) &&
+          !categoryDropdown.contains(event.target)
+        ) {
+          categoryDropdown.style.display = "none";
+        }
+      });
+
+      const btn = document.querySelector(".login-btn");
+      const modal = document.getElementById("loginModal");
+      const closeBtn = document.querySelector(".close-btn");
+
+      btn.onclick = function () {
+        modal.style.display = "flex";
+      };
+      closeBtn.onclick = function () {
+        modal.style.display = "none";
+      };
+      window.onclick = function (event) {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      };
+</script>
+
